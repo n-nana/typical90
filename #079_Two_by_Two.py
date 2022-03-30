@@ -27,11 +27,9 @@ for y in range(H-1):
 
 flag = True
 for y in range(H):
-    if A[y][-1] != B[y][-1]:
-        flag = False
-for x in range(W):
-    if A[-1][x] != B[-1][x]:
-        flag = False
+    for x in range(W):
+        if A[y][x] != B[y][x]:
+            flag = False
 
 if flag:
     print("Yes")
