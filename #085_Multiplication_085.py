@@ -1,23 +1,36 @@
 # 085 - Multiplication 085（★4）
-# 約数列挙？をつかった方法だともっと早くできそう（そのうち、、）
+# 約数列挙ver.
 
 K = int(input())
-N1 = int(pow(K,(1/3))//1) + 2
+
+#--------------------------------
+divisors = []
+for i in range(1,K+1):
+    if i*i > K:
+        break
+    if K%i != 0:
+        continue
+    divisors.append(i)
+    if i != K//i:
+        divisors.append(K//i)
+
+divisors.sort()
+#--------------------------------
+
+N = len(divisors)
+#print(divisors)
 
 ans = 0
-for a in range(1,N1):
-    # bの探索範囲を減らした
-    N2 = int(pow(K/a,(1/2))//1) + 2
-    for b in range(a,N2):
-        c = K/a/b
+for i in range(N):
+    a = divisors[i]
+    for j in range(i,N):
+        b = divisors[j]
+        if (K//a)%b != 0:
+            continue
+        c = K//(a*b)
         if c < b:
             continue
-        if c < 1:
-            break
-        if c.is_integer():
-            ans += 1
+        ans += 1
+
 print(ans)
-
-
-
-
+        
