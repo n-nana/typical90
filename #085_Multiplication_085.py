@@ -4,14 +4,14 @@
 K = int(input())
 
 #--------------------------------
-divisors = []
+divisors = [] # Kの約数リスト
 for i in range(1,K+1):
-    if i*i > K:
+    if i*i > K: # これ以上は見ない
         break
-    if K%i != 0:
+    if K%i != 0: # 約数でないのでpass
         continue
     divisors.append(i)
-    if i != K//i:
+    if i != K//i: # 商をリストに追加
         divisors.append(K//i)
 
 divisors.sort()
@@ -25,7 +25,7 @@ for i in range(N):
     a = divisors[i]
     for j in range(i,N):
         b = divisors[j]
-        if (K//a)%b != 0:
+        if (K//a)%b != 0: # a*bで割り切れないのでpass
             continue
         c = K//(a*b)
         if c < b:
