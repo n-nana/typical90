@@ -1,12 +1,14 @@
 #072 - Loop Railway Plan（★4）
+# global変数 ver.
 
 import sys
 sys.setrecursionlimit(10**7)
 
 def rec(y,x,c):
-
+    global ans
+    
     if y == sy and x == sx and visited[y][x]:
-        ans[0] = max(c, ans[0])
+        ans = max(c, ans)
         return
     
     for i in range(4):
@@ -19,8 +21,8 @@ def rec(y,x,c):
             continue
         visited[Y][X] = True
         rec(Y,X,c+1)
-        visited[Y][X] = False # わすれがちな処理、、
-
+        visited[Y][X] = False
+        
 #------------------------------------
 H,W = map(int,input().split())
 G = []
@@ -31,17 +33,11 @@ for _ in range(H):
 dx = [-1,0,0,1]
 dy = [0,-1,1,0]
 
-res = -1
+ans = -1
 for i in range(H):
     for j in range(W):
-        ans = [-1] # リストにしている
         visited = [[False]*W for _ in range(H)]
         sy,sx = i,j
         rec(i,j,0)
-        res = max(ans[0], res)
-
-print(res if res > 2 else -1)
-
-
-
-
+        
+print(ans if ans > 2 else -1)
