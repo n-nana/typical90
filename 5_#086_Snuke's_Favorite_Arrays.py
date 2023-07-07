@@ -1,4 +1,5 @@
 # 086 - Snuke's Favorite Arrays（★5）
+# https://zenn.dev/m193h/articles/c9495557d135a4
 
 MOD = 1000000007
 MOD = 10**9 + 7
